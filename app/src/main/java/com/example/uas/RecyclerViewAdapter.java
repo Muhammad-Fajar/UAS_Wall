@@ -27,6 +27,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     // view-view disini bisa berupa ImageView, TextView, EditText, Dll.
     // ViewHolder adalah class static yang terdapat pada adapter, jadi setiap
     // komponen yang kita buat, kita harus menginisialisasikannya didalam ViewHolder.
+    //meningkatkan performa dari RecyclerView dengan Adapter di Android.
 
     @NonNull
     @Override
@@ -58,7 +59,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
 
-    @Override
+    @Override //RecyclerView memanggil metode ini untuk mendapatkan ukuran set data
     public int getItemCount() {
         return imgArraylist.size();
     }

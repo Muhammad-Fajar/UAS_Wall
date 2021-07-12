@@ -27,6 +27,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Random;
 
+
+//jembatan antara AdapterView dengan data.
 public class PageAdapter extends PagerAdapter {
 
     WallPagerActivity wallPagerActivity;
@@ -99,6 +101,10 @@ public class PageAdapter extends PagerAdapter {
     }
 
 
+    //AsyncTask -> Sebuah class yang disediakan Android untuk proses/operasi pengambilan/pengiriman yang dilakukan secara background.
+    //Biasanya kita menggunakan AsyncTask saat mengambil data dari API. Proses pengambilan datanya
+    //terjadi di background dan di UI nya hanya menampilkan ProgressDialog.
+
     //METHOD setWallPaper agar gambar yang kita pilih diterapkan menjadi wallpaper smarthphone
     class setWallPaper extends AsyncTask<String, Void, Bitmap> {
 
@@ -113,7 +119,7 @@ public class PageAdapter extends PagerAdapter {
 
         }
 
-        @Override
+        @Override //Pada method ini proses thread berjalan, proses pengiriman/pengambilan data terjadi disini.
         protected Bitmap doInBackground(String... urls) {
 
             random = new Random();
@@ -145,9 +151,11 @@ public class PageAdapter extends PagerAdapter {
         }
     }
 
+
+    //Method untuk tombol share image.
     class shareImage extends AsyncTask<String, Void, Bitmap> {
 
-        @Override
+        @Override //Method ini digunakan untuk mengupdate User Interface ketika proses doInBackground(Void… params) telah selesai (berjalan di Thread UI).
         protected void onPostExecute(Bitmap bitmap) {
             super.onPostExecute(bitmap);
             Toast.makeText(wallPagerActivity, "Share Successfully", Toast.LENGTH_SHORT).show();
