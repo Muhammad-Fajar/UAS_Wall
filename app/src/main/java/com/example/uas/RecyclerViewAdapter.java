@@ -23,6 +23,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         this.secondPage=secondPage;
     }
 
+    //ViewHolder berfungsi untuk menyimpan view-view yang akan di gunakan pada item,
+    // view-view disini bisa berupa ImageView, TextView, EditText, Dll.
+    // ViewHolder adalah class static yang terdapat pada adapter, jadi setiap
+    // komponen yang kita buat, kita harus menginisialisasikannya didalam ViewHolder.
+
     @NonNull
     @Override
     public Myclass onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -34,6 +39,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(@NonNull Myclass holder, int position) {
 
+        //Glide adalah sumber terbuka perpustakaan Android yang populer untuk memuat gambar, video, dan GIF animasi.
+        //sebelum menggunakan glide di sini saya terlebih dahulu menambahkan library untuk glide pada gradle
+        //karena library ini berasal dari luar bukan bawaan android studio.
         Glide.with(secondPage).load(imgArraylist.get(position)).into(holder.imageView);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +63,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         return imgArraylist.size();
     }
 
+    //Recycler.ViewHolder ini berfungsi untuk memperluas tampilan yang akan ditampilkan
+    //atau bahkan semua data yang tersimpan dalam ArrayList
     class Myclass extends RecyclerView.ViewHolder{
 
         ImageView imageView;

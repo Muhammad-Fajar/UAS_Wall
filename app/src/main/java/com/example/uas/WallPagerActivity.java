@@ -12,6 +12,8 @@ public class WallPagerActivity extends AppCompatActivity {
 
     int pos;
     ArrayList<String> allImageList= new ArrayList<>();
+    //ViewPager komponen android yang sering dipakai untuk menampilkan data dalam format full screen dan user
+    // bisa berpindah antar data dengan menggeser ke kiri atau kekanan
     ViewPager viewpager;
 
     @Override

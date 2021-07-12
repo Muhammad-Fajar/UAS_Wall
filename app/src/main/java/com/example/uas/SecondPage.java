@@ -10,7 +10,11 @@ import java.util.ArrayList;
 
 public class SecondPage extends AppCompatActivity {
 
+    //deklarasi RecyclerView
     RecyclerView rcvMain;
+
+    //deklarasi Array list untuk menyimpan data yang akan dipakai nantinya dan akan ditampilkan
+    // dalam RecyclerView
     ArrayList<String> imgArraylist=new ArrayList<>();
 
     @Override
@@ -40,8 +44,9 @@ public class SecondPage extends AppCompatActivity {
         imgArraylist.add("https://fsb.zobj.net/crop.php?r=hPxqNr-a78JeOdC9-NE9pZN9HJmYEXM8oBtxY84Wo77csj9dQGINGGQRz-14j1iCrCXYtythaVYGjeg58i5JW1_MYxPAMdTlfUBFG3R1mqAort3mYb4y8TQ84n7w0jPcLzGiCRjxUCn-eyct");
 
         rcvMain=findViewById(R.id.rcvMain);
-        rcvMain.setLayoutManager(new GridLayoutManager(this, 2));
+        rcvMain.setLayoutManager(new GridLayoutManager(this, 2)); //grid untuk mengatur brp baris yg akn ditampilkan di sini 2 baris saja yang dipakai
+
         RecyclerViewAdapter recyclerViewAdapter=new RecyclerViewAdapter(SecondPage.this,imgArraylist);
-        rcvMain.setAdapter(recyclerViewAdapter);
+        rcvMain.setAdapter(recyclerViewAdapter); //set untuk memunculkan data pada array agar muncul dalam RecyclerView
     }
 }

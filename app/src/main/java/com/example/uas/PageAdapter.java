@@ -48,7 +48,7 @@ public class PageAdapter extends PagerAdapter {
     }
 
     @NonNull
-    @Override
+    @Override //method untuk menginisiasi objeck yang akan digunakan
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
 
         View view = LayoutInflater.from(wallPagerActivity).inflate(R.layout.page_adapter_irem,container,false);
@@ -61,20 +61,26 @@ public class PageAdapter extends PagerAdapter {
         share = view.findViewById(R.id.share);
         setwall = view.findViewById(R.id.setWall);
 
-
+        //Glide untuk memanggil semua data array agar ditampilkan dalam layout page_adapter
         Glide.with(wallPagerActivity).load(allImageList.get(position)).into(simpleImg);
 
+        //BlurImage sama saja seperti Glide yaitu berfungsi untuk memblur gambar/foto yang ada,
+        //sebelum memakainya karena BlurImage ini bukan bawaan android studio maka terlebih dahulu
+        //menambahkan librarynya pada gradle
         BlurImage.withContext(wallPagerActivity).blurFromUri(allImageList.get(position)).into(imageView);
 
+
+
+        //memnaggil method share yang telah dibuat ketika button share diklik
         share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 new shareImage().execute(allImageList.get(position));
 
             }
         });
 
+        ////memanggil method setWallpaper yang telah dibuat ketika button set diklik
         setwall.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,15 +98,17 @@ public class PageAdapter extends PagerAdapter {
         container.removeView((View)object);
     }
 
+
+    //METHOD setWallPaper agar gambar yang kita pilih diterapkan menjadi wallpaper smarthphone
     class setWallPaper extends AsyncTask<String, Void, Bitmap> {
 
         Random random;
         int var;
 
-        @Override
+        @Override //method yang akan dilakukan ketika doInBackground telah selesai dieksekusi
         protected void onPostExecute(Bitmap bitmap) {
             super.onPostExecute(bitmap);
-
+            //sebuah toast untuk memunculkan pesan
             Toast.makeText(wallPagerActivity, "Wallpaper set Success", Toast.LENGTH_SHORT).show();
 
         }
